@@ -22,6 +22,8 @@ import handleImage from "./controllers/image.js";
 import dotenv from "dotenv";
 dotenv.config();
 
+const app = express();
+
 const db = knex({
   client: "pg",
   connection: {
@@ -39,8 +41,6 @@ db.select()
   .then((data) => {
     console.log("db select", data);
   });
-
-const app = express();
 
 // app.use(bodyParser.json());
 app.use(cors());
