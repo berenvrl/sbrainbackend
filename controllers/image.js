@@ -1,4 +1,5 @@
-const Clarifai = require("clarifai");
+// const Clarifai = require("clarifai");
+import { Clarifai } from "clarifai";
 require("dotenv").config();
 
 const app = new Clarifai.App({
