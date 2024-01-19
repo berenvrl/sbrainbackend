@@ -2,11 +2,12 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import cors from "cors";
 import knex from "knex";
-import handleRegister from "./controllers/register";
-import handleSignin from "./controllers/signin";
-import handleProfileGet from "./controllers/profile";
-import handleAPICall from "./controllers/image";
-import handleImage from "./controllers/image";
+
+import handleRegister from "./controllers/register.js";
+import handleSignin from "./controllers/signin.js";
+import handleProfileGet from "./controllers/profile.js";
+import handleAPICall from "./controllers/image.js";
+import handleImage from "./controllers/image.js";
 
 // const bcrypt = require("bcryptjs");
 // const cors = require("cors");
