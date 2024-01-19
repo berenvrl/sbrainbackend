@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const knex = require("knex");
