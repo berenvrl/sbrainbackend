@@ -27,12 +27,12 @@ const app = express();
 const db = knex({
   client: "pg",
   connection: {
-    connectionString: config.process.env.DATABASE_URL,
-    host: config[process.env.DATABASE_HOST],
-    port: config[5432],
-    user: config[process.env.DATABASE_USER],
-    database: config[process.env.DATABASE_DB],
-    password: config[process.env.DATABASE_PASSWORD],
+    connectionString: process.env.DATABASE_URL,
+    host: process.env.DATABASE_HOST,
+    port: 5432,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DB,
   },
 });
 
@@ -74,8 +74,8 @@ app.post("/imageurl", (req, res) => {
 //   console.log(`Server is listening on port ${process.env.PORT}`);
 // });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is listening on port ${process.env.PORT}`);
+app.listen(5432 || 3000, () => {
+  console.log(`Server is listening on port ${5432}`);
 });
 
 /*
