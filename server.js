@@ -18,7 +18,9 @@ import handleImage from "./controllers/image.js";
 // const image = require("./controllers/image");
 //const bodyParser = require("body-parser");
 
-require("dotenv").config();
+// require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
 const db = knex({
   client: "pg",

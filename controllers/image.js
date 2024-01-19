@@ -1,7 +1,9 @@
 // const Clarifai = require("clarifai");
+import dotenv from "dotenv";
+dotenv.config();
 import pkg from "clarifai";
 const { Clarifai } = pkg;
-require("dotenv").config();
+// require("dotenv").config();
 
 const app = new Clarifai.App({
   apiKey: process.env.API_KEY,
