@@ -27,12 +27,12 @@ const app = express();
 const db = knex({
   client: "pg",
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    host: process.env.DATABASE_HOST,
-    port: 5432,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DB,
+    connectionString: config.process.env.DATABASE_URL,
+    host: config[process.env.DATABASE_HOST],
+    port: config[5432],
+    user: config[process.env.DATABASE_USER],
+    database: config[process.env.DATABASE_DB],
+    password: config[process.env.DATABASE_PASSWORD],
   },
 });
 
