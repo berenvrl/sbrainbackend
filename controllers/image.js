@@ -4,8 +4,12 @@ dotenv.config();
 import Clarifai from "clarifai";
 // require("dotenv").config();
 
+// const app = new Clarifai.App({
+//   apiKey: process.env.API_KEY,
+// });
+
 const app = new Clarifai.App({
-  apiKey: process.env.API_KEY,
+  apiKey: "97b47075e8124920ab33bb9f5fe9d5ca",
 });
 
 console.log(app.API_KEY);

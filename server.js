@@ -68,10 +68,14 @@ app.post("/imageurl", (req, res) => {
   handleAPICall(req, res);
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is listening on port ${process.env.PORT}`);
+// app.listen(process.env.PORT, () => {
+//   console.log(`Server is listening on port ${process.env.PORT}`);
+// });
+
+app.listen(3000, () => {
+  console.log(`Server is listening on port 3000`);
 });
-console.log(`Server is listening on port ${process.env.PORT}`);
+
 /*
 / --> res= this is working
 /signin --> POST= success/fail
