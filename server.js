@@ -35,6 +35,7 @@ const db = knex({
     password: process.env.DATABASE_PW,
     database: process.env.DATABASE_DB,
     host: process.env.DATABASE_HOST,
+    ssl: { rejectUnauthorized: false },
   },
 });
 
