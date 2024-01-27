@@ -30,10 +30,11 @@ app.use(express.json());
 const db = knex({
   client: "pg",
   connection: {
-    host: "127.0.0.1",
-    user: "postgres",
-    password: "3292",
-    database: "sbdatabase",
+    port: 5432,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PW,
+    database: process.env.DATABASE_DB,
+    host: process.env.DATABASE_HOST,
   },
 });
 
