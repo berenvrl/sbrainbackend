@@ -1,38 +1,39 @@
-import express from "express";
-import bcrypt from "bcryptjs";
-import cors from "cors";
-import knex from "knex";
+// import express from "express";
+// import bcrypt from "bcryptjs";
+// import cors from "cors";
+// import knex from "knex";
 
-import handleRegister from "./controllers/register.js";
-import handleSignin from "./controllers/signin.js";
-import handleProfileGet from "./controllers/profile.js";
-import handleAPICall from "./controllers/image.js";
-import handleImage from "./controllers/image.js";
+// import handleRegister from "./controllers/register.js";
+// import handleSignin from "./controllers/signin.js";
+// import handleProfileGet from "./controllers/profile.js";
+// import handleAPICall from "./controllers/image.js";
+// import handleImage from "./controllers/image.js";
 
-// const bcrypt = require("bcryptjs");
-// const cors = require("cors");
-// const knex = require("knex");
-// const register = require("./controllers/register");
-// const signin = require("./controllers/signin");
-// const profile = require("./controllers/profile");
-// const image = require("./controllers/image");
-//const bodyParser = require("body-parser");
+const express = require("express");
+require("dotenv").config();
+const bcrypt = require("bcryptjs");
+const cors = require("cors");
+const knex = require("knex");
 
-// require("dotenv").config();
-import dotenv from "dotenv";
-dotenv.config();
+const register = require("./controllers/register");
+const signin = require("./controllers/signin");
+const profile = require("./controllers/profile");
+const image = require("./controllers/image");
+
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 const db = knex({
   client: "pg",
   connection: {
-    connectionString: process.env.DATABASE_URL,
-    host: process.env.DATABASE_HOST,
-    port: 5432,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_DB,
+    host: "127.0.0.1",
+    user: "postgres",
+    password: "3292",
+    database: "sbdatabase",
   },
 });
 
@@ -42,41 +43,37 @@ db.select()
     console.log("db select", data);
   });
 
-// app.use(bodyParser.json());
-app.use(cors());
-app.use(express.json());
-
 app.get("/", (req, res) => {
   res.send("success");
 });
 
 app.post("/signin", (req, res) => {
-  handleSignin(req, res, db, bcrypt);
+  signin.handleSignin(req, res, db, bcrypt);
 });
 
 app.post("/register", (req, res) => {
-  handleRegister(req, res, db, bcrypt);
+  register.handleRegister(req, res, db, bcrypt);
 });
 
 app.get("/profile/:id", (req, res) => {
-  handleProfileGet(req, res, db);
+  profile.handleProfileGet(req, res, db);
 });
 
 app.put("/image", (req, res) => {
-  handleImage(req, res, db);
+  image.handleImage(req, res, db);
 });
 
 app.post("/imageurl", (req, res) => {
-  handleAPICall(req, res);
+  image.handleAPICall(req, res);
 });
 
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server is listening on port ${process.env.PORT}`);
+app.listen(process.env.PORT || 3001, () => {
+  console.log(`Server is listening on port ${process.env.PORT}`);
+});
+
+// app.listen(5432 || 3000, () => {
+//   console.log(`Server is listening on port ${5432}`);
 // });
-
-app.listen(5432 || 3000, () => {
-  console.log(`Server is listening on port ${5432}`);
-});
 
 /*
 / --> res= this is working

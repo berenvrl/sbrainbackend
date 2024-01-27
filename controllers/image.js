@@ -1,8 +1,6 @@
-// const Clarifai = require("clarifai");
-import dotenv from "dotenv";
-dotenv.config();
-import Clarifai from "clarifai";
-// require("dotenv").config();
+const Clarifai = require("clarifai");
+
+//import Clarifai from "clarifai";
 
 // const app = new Clarifai.App({
 //   apiKey: process.env.API_KEY,
@@ -34,7 +32,7 @@ const handleImage = (req, res, db) => {
     .catch((err) => res.status(400).json("unable to get entries"));
 };
 
-export default {
+module.exports = {
   handleImage,
   handleAPICall,
 };
